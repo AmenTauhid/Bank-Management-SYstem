@@ -5,36 +5,34 @@ import Bank
 import Account
 
 class mainProgram:
-                
     def showMainMenu():
         print("######################################")
         print('        - 1) Open new Account -       ')
         print('         - 2) Select Account -        ')
         print('           - 3) Go back -             ')
         print("######################################")
-        choice2 = str(input("Please enter the number beside the option you desire to do:\n>"))
-        l1 = ["1","2","3"]
+
         alpha = Bank.BankInfo()
-        while choice2 != l1:
-            if choice2 == "1":
-                #TODO: open account
-                accHolderName = input("Please enter in the account holder name:\n>")
-                alpha.openAccount(accHolderName)
-                mainProgram.showMainMenu()
-            elif choice2 == "2":
-                #choice2 = 0
-                #while choice2 <= 0:
-                 #   choice2 = int(input("Please enter the valid account number you wish to work on:\n>")) # this part of the method is on trial right now, will implement it correctly later on.
-                  #  if choice2 >= 0:
-                   #     mainProgram.showAccountMenu()
-                    #else:
-                     #   choice2 = int(input("Invalid entry!!\n Entered account number is either invalid or doesn't exist\nPlease enter the valid account number you wish to work on:\n>"))
-                entered_card_number = int(input("Please enter the valid account number you wish to work on:\n>"))
-                alpha.searchAccount(entered_card_number)
-            elif choice2 == "3":
-                mainProgram.run()
-            else:
-                choice2 = str(input("Invalid entry!!\nPlease enter the valid number beside the option you desire to do:\n>"))
+        while True:
+            choice2 = str(input("Please enter the number beside the option you desire to do:\n>"))
+            l1 = ["1","2","3"]
+            while choice2 != l1:
+                if choice2 == "1":
+                    accHolderName = input("Please enter in the account holder name:\n>")
+                    alpha.openAccount(accHolderName)
+                    break
+                elif choice2 == "2":
+                    #print(alpha._accounts)
+                    entered_card_number = input("Please enter the valid account number you wish to work on:\n>")
+                    if alpha.searchAccount(entered_card_number) is True:
+                        print('You have successfully logged in!')
+                        mainProgram.showAccountMenu()
+                    elif alpha.searchAccount(entered_card_number) is False:
+                        print('Wrong card number')
+                elif choice2 == "3":
+                    mainProgram.run()
+                else:
+                    choice2 = str(input("Invalid entry!!\nPlease enter the valid number beside the option you desire to do:\n>"))
 
     def showAccountMenu():
         print("######################################")
@@ -43,19 +41,23 @@ class mainProgram:
         print('            - 3) Withdraw  -          ')
         print('             - 4) Go back -           ')
         print("######################################")
-        choice = str(input("Please enter the number beside the option you desire to do:\n>"))
-        l1 = ["1","2","3","4"]
-        while choice != l1:
-            if choice == "1":
-                pass
-            elif choice == "2":
-                pass
-            elif choice == "3":
-                pass
-            elif choice == "4":
-                mainProgram.showMainMenu()
-            else:
-                choice = str(input("Invalid entry!!\nPlease enter the valid number beside the option you desire to do:\n>"))
+        while True:
+            choice = str(input("Please enter the number beside the option you desire to do:\n>"))
+            l1 = ["1","2","3","4"]
+            while choice != l1:
+                if choice == "1":
+                    #TODO: Check Balance
+                    pass
+                elif choice == "2":
+                    #TODO: Deposit
+                    pass
+                elif choice == "3":
+                    #TODO: Withdraw
+                    pass
+                elif choice == "4":
+                    mainProgram.showMainMenu()
+                else:
+                    choice = str(input("Invalid entry!!\nPlease enter the valid number beside the option you desire to do:\n>"))
 
     def run():
         os.system('cls')

@@ -6,20 +6,22 @@ import sys
 class BankInfo:
     def __init__(self):
         self._name = "Telemonical Co."
-        self._accounts: Dict[str, Account.Account] = {}
+        self._accounts: Dict[str, Account.baseAccount] = {}
     
     def openAccount(self,accHolderName):
-        newAcc = f'400000{randrange(1e10):010}'
-        self._accounts[newAcc] = newAcc
-        print(f"Your card number: {newAcc}\n")
+        newAccNum = f'400000{randrange(1e10):010}'
+        newAcc = Account.baseAccount(newAccNum,accHolderName)
+        self._accounts[newAccNum] = newAcc
+        print(f"Your card number: {newAccNum}\n")
 
 
     def searchAccount(self,entered_card_number):
-        for i in range(3):
-            if entered_card_number != self._accounts:
-                print('Wrong card number')
-            else:
-                print('You have successfully logged in!')
-                break
+        if entered_card_number in self._accounts:
+            #print('You have successfully logged in!')
+            return True
+        else:
+            return False
+            #print('Wrong card number')
+            
 
         

@@ -1,8 +1,8 @@
-class Account:
+class baseAccount:
     def __init__(self,accNum,accHolderName):
         self._accountNumber = accNum
         self._accHolderName = accHolderName
-        self._rateOfInterest = 0
+        self._rateOfInterest = 15
         self._currentBalance = 0
     
     def getAccountNumber(self):
@@ -17,8 +17,10 @@ class Account:
     def getCurrentBalance(self):
         return self._currentBalance
 
-    def deposit():
+    def deposit(self,depositMoney):
+        self._currentBalance = depositMoney + (depositMoney*self._rateOfInterest/100)
         pass
     
-    def withdraw():
+    def withdraw(self,withdrawMoney):
+        self._currentBalance -= withdrawMoney
         pass
