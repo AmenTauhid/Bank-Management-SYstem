@@ -33,6 +33,8 @@ class MainProgram:
                     menuPart.setAccNum(entered_card_number)
                     if alpha.searchAccount(entered_card_number) is True:
                         time.sleep(2)
+                        print("Account found. Logging in...")
+                        time.sleep(3)
                         print('You have successfully logged in!')
                         time.sleep(2)
                         menuPart.showAccountMenu()
@@ -51,9 +53,9 @@ class MainProgram:
     def showAccountMenu(self):
         print("######################################")
         print('         - 1) Check Balance -        ')
-        print('            - 2) Deposit -           ')
+        print('           - 2) Deposit -           ')
         print('           - 3) Withdraw  -          ')
-        print('            - 4) Go back -           ')
+        print('           - 4) Log Out -           ')
         print("######################################")
         accPart = MainProgram()
         alpha = Bank.BankInfo()
@@ -66,17 +68,30 @@ class MainProgram:
             while choice != l1:
                 if choice == "1":
                     balance = accName.getCurrentBalance()
+                    print("Checking balance...")
+                    time.sleep(3)
                     print(f"Your current balance: {balance}\n")
+                    time.sleep(2)
                     break
                 elif choice == "2":
                     depositMoney = int(input("Enter the amount of money you wish to deposit:\n>"))
                     accName.deposit(depositMoney)
+                    print("Transaction in process...")
+                    time.sleep(3)
+                    print("Money deposited successfully\n")
+                    time.sleep(2)
                     break
                 elif choice == "3":
                     withdrawMoney = int(input("Enter the amount of moeny you wish to withdraw:\n>"))
                     accName.withdraw(withdrawMoney)
+                    print("Transaction in process...")
+                    time.sleep(3)
+                    print("Money withdrawn successfully\n")
+                    time.sleep(2)
                     break
                 elif choice == "4":
+                    print("Logging out...")
+                    time.sleep(3)
                     accPart.showMainMenu()
                 else:
                     choice = str(input("Invalid entry!!\nPlease enter the valid number beside the option you desire to do:\n>"))

@@ -6,8 +6,5 @@ class ChecquingAccount(Account.BaseAccount):
         self.overdraftAllowed = 5000
         self._rateOfInterest = 5
 
-    def deposit(self, depositMoney):
-        return super().deposit(depositMoney) 
-
-    def withdraw(withdrawMoney):
+    def withdraw(self,withdrawMoney):
         pass
