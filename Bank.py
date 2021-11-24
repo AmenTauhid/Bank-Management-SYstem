@@ -26,13 +26,13 @@ class BankInfo:
         user5 = ChecquingAccount.ChecquingAccount(accNum5,"Sid")
         self._accounts[accNum5] = user5
    
-    '''
+    
     def openAccount(self,accHolderName):
         accNum = f'400{randrange(1e10):010}'
         account = Account.BaseAccount(accNum,accHolderName) 
         self._accounts[accNum] = account
         print(f"Your card number: {accNum}\n")
-    '''
+    
 
     def searchAccount(self,entered_card_number):
 
