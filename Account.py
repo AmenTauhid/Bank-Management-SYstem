@@ -5,7 +5,6 @@ class BaseAccount:
         self._accHolderName = accHolderName
         self._rateOfInterest = 0
         self._currentBalance = 0
-
     
     def getAccountNumber(self):
         return self._accountNumber
@@ -20,11 +19,10 @@ class BaseAccount:
         return self._currentBalance
 
     def deposit(self,depositMoney):
-        while depositMoney <=0:
-            try:
-                self._currentBalance = depositMoney + (depositMoney*self._rateOfInterest/100)
-            except ValueError:
-                return 'Not a valid deposit!'
-    
+        try:
+            self._currentBalance += (depositMoney + (depositMoney*self._rateOfInterest/100))
+        except ValueError:
+            return 'Not a valid deposit!'
+
     def withdraw(self,withdrawMoney):
         self._currentBalance -= withdrawMoney

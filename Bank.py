@@ -5,29 +5,6 @@ import ChecquingAccount
 import typing
 class BankInfo:
 
-    """
-    def __init__(self):
-        self._name = "ABC Bank"
-        self._accounts = []
-
-        accNum1 = '123456'
-        accName1 = "Adam"
-        accNum2 = '124124'
-        accName2 = "Miles"
-        accNum3 = '523122'
-        accName3 = "Chris"
-        accNum4 = '623412'
-        accName4 = "Miley"
-        accNum5 = '435131'
-        accName5 = "Siddy"
-        
-        self._accounts.append(SavingAccount.SavingAccount(accNum1[0],accName1[0]))
-        self._accounts.append(SavingAccount.SavingAccount(accNum2[1],accName2[1]))
-        self._accounts.append(SavingAccount.SavingAccount(accNum3[2],accName3[2]))
-        self._accounts.append(ChecquingAccount.ChecquingAccount(accNum4[3],accName4[3]))
-        self._accounts.append(ChecquingAccount.ChecquingAccount(accNum5[4],accName5[4]))
-    """    
-
 
     def __init__(self):
         self._name = "Telemonical Co."
@@ -56,20 +33,6 @@ class BankInfo:
         self._accounts[accNum] = account
         print(f"Your card number: {accNum}\n")
     '''
-         
-    """
-    def searchAccount(self,entered_card_number,):
-        
-        #if entered_card_number in self._accounts:
-        #    return True 
-        #else:
-        #    return False
-    
-        for i in self._accounts:
-            if self._accounts == entered_card_number: 
-                return True
-        return False
-    """
 
     def searchAccount(self,entered_card_number):
 
