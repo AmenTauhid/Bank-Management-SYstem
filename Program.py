@@ -2,14 +2,14 @@ import os
 import time
 import sys
 import Bank
-import Account
 class MainProgram:
 
-    def source(self,entered_card_number):
+    def __init__(self,entered_card_number):
         self.setAccNum(entered_card_number)
                 
     def showMainMenu(self):
 
+        os.system('cls')
         menuPart = MainProgram()
         print("######################################")
         print('        - 1) Open new Account -       ')
@@ -25,8 +25,7 @@ class MainProgram:
             while choice2 != l1:
                 if choice2 == "1":
                     accHolderName = input("Please enter in the account holder name:\n>")
-                    alpha.openAccount(accHolderName) #This function is still a bit faulty
-                    #print(f"Your card number: {alpha.openAccount()}\n")
+                    alpha.openAccount(accHolderName) #This function is still a bit faulty1
                     break
                 if choice2 == "2":
                     entered_card_number = str(input("Please enter the valid account number you wish to work on:\n>"))
@@ -51,6 +50,7 @@ class MainProgram:
         return self._cardNum 
 
     def showAccountMenu(self):
+        os.system('cls')
         print("######################################")
         print('         - 1) Check Balance -        ')
         print('           - 2) Deposit -           ')
@@ -60,8 +60,8 @@ class MainProgram:
         accPart = MainProgram()
         alpha = Bank.BankInfo()
         accNum = accPart._cardNum      
+        accName = alpha.returnAccValue(accNum)
         
-        accName = alpha.returnValue(accNum)
         while True:
             choice = str(input("Please enter the number beside the option you desire to do:\n>"))
             l1 = ["1","2","3","4"]
@@ -75,10 +75,13 @@ class MainProgram:
                     break
                 elif choice == "2":
                     depositMoney = int(input("Enter the amount of money you wish to deposit:\n>"))
-                    accName.deposit(depositMoney)
                     print("Transaction in process...")
+                    accName.deposit(depositMoney)
                     time.sleep(3)
-                    print("Money deposited successfully\n")
+                    if accName.deposit(depositMoney) is True:
+                        print("Money deposited successfully\n")
+                    elif accName.deposit(depositMoney) is False:
+                        print("Money not deposited. Invalid amount!!!\n")
                     time.sleep(2)
                     break
                 elif choice == "3":
@@ -119,8 +122,18 @@ class MainProgram:
                 choice3 = str(input("Invalid entry!!\nPlease enter the valid number beside the option you desire to go to:\n>"))
 
     def aboutBank(self):
-        print("There's nothing about this bank, you cannot go back from here :)")
-              
-
+        print("A really famous bank which provides great rate of interest to both saving and chequing accounts :)")
+        accPart = MainProgram()
+        time.sleep(2)
+        print("Enter 1 to go back")
+        while True:
+            choice = str(input(">"))
+            l1 = ["1"]
+            while choice != l1:
+                if choice == "1":  
+                    print("Going back...")
+                    time.sleep(2)
+                    accPart.run()
+                    
 runMode = MainProgram()
 runMode.run()

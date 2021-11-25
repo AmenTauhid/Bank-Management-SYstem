@@ -25,6 +25,7 @@ class BankInfo:
         accNum5 = '435131'
         user5 = ChecquingAccount.ChecquingAccount(accNum5,"Sid")
         self._accounts[accNum5] = user5
+
    
     
     def openAccount(self,accHolderName):
@@ -32,7 +33,7 @@ class BankInfo:
         account = Account.BaseAccount(accNum,accHolderName) 
         self._accounts[accNum] = account
         print(f"Your card number: {accNum}\n")
-    
+        return accNum
 
     def searchAccount(self,entered_card_number):
 
@@ -43,8 +44,8 @@ class BankInfo:
             if key_list[i] == entered_card_number:
                 return True
         return False
-    
-    def returnValue(self,accNum):
+
+    def returnAccValue(self,accNum):
         val_list = list(self._accounts.values())
         key_list = list(self._accounts.keys())
 

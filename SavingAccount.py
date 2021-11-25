@@ -6,4 +6,8 @@ class SavingAccount(Account.BaseAccount):
         self._rateOfInterest = 15
     
     def withdraw(self,withdrawMoney):
-        pass
+        if self._currentBalance > self._minimumBalance:
+            self._currentBalance = self._currentBalance - withdrawMoney
+            return True
+        else:
+            return False

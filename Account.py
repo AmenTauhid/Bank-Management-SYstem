@@ -19,10 +19,11 @@ class BaseAccount:
         return self._currentBalance
 
     def deposit(self,depositMoney):
-        try:
+        if depositMoney > 0:
             self._currentBalance += (depositMoney + (depositMoney*self._rateOfInterest/100))
-        except ValueError:
-            return 'Not a valid deposit!'
+            return True
+        else:
+            return False
 
     def withdraw(self,withdrawMoney):
         self._currentBalance = self._currentBalance - withdrawMoney
