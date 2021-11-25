@@ -12,6 +12,8 @@ class ChecquingAccount(Account.BaseAccount):
             return True
         elif self._currentBalance < withdrawMoney:
             self._currentBalance = (self._currentBalance + self._overdraftAllowed) - withdrawMoney
+            self._overdraftAllowed = 0
             return True
-        else:
+        elif self._currentBalance < 0 and self._overdraftAllowed == 0:
             return False
+        

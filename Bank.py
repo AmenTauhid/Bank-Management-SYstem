@@ -10,19 +10,19 @@ class BankInfo:
         self._name = "Telemonical Co."
         self._accounts: typing.Dict[str, Account.BaseAccount()] = {}
 
-        accNum1 = '123456'
+        accNum1 = '4000218124421'
         user1 = SavingAccount.SavingAccount(accNum1,"Adam")
         self._accounts[accNum1] = user1
-        accNum2 = '124124'
+        accNum2 = '4000321262624'
         user2 = SavingAccount.SavingAccount(accNum2,"Miley")
         self._accounts[accNum2] = user2
-        accNum3 = '523122'
+        accNum3 = '400043523122'
         user3 = SavingAccount.SavingAccount(accNum3,"Chris")
         self._accounts[accNum3] = user3
-        accNum4 = '623412'
+        accNum4 = '400093623412'
         user4 = ChecquingAccount.ChecquingAccount(accNum4,"Philips")
         self._accounts[accNum4] = user4
-        accNum5 = '435131'
+        accNum5 = '400102435131'
         user5 = ChecquingAccount.ChecquingAccount(accNum5,"Sid")
         self._accounts[accNum5] = user5
 

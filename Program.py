@@ -4,7 +4,7 @@ import sys
 import Bank
 class MainProgram:
 
-    def __init__(self,entered_card_number):
+    def source(self,entered_card_number):
         self.setAccNum(entered_card_number)
                 
     def showMainMenu(self):
@@ -54,7 +54,7 @@ class MainProgram:
         print("######################################")
         print('         - 1) Check Balance -        ')
         print('           - 2) Deposit -           ')
-        print('           - 3) Withdraw  -          ')
+        print('           - 3) Withdraw -          ')
         print('           - 4) Log Out -           ')
         print("######################################")
         accPart = MainProgram()
@@ -70,28 +70,45 @@ class MainProgram:
                     balance = accName.getCurrentBalance()
                     print("Checking balance...")
                     time.sleep(3)
-                    print(f"Your current balance: {balance}\n")
+                    print(f"Your current balance: {balance}.CAD\n")
                     time.sleep(2)
                     break
                 elif choice == "2":
-                    depositMoney = int(input("Enter the amount of money you wish to deposit:\n>"))
-                    print("Transaction in process...")
-                    accName.deposit(depositMoney)
-                    time.sleep(3)
-                    if accName.deposit(depositMoney) is True:
-                        print("Money deposited successfully\n")
-                    elif accName.deposit(depositMoney) is False:
-                        print("Money not deposited. Invalid amount!!!\n")
-                    time.sleep(2)
-                    break
+                    try:
+                        depositMoney = int(input("Enter the amount of money you wish to deposit:\n>"))
+                        print("Transaction in process...")
+                        accName.deposit(depositMoney)
+                        time.sleep(3)
+                        if accName.deposit(depositMoney) is True:
+                            print("Money deposited successfully\n")
+                            break
+                        elif accName.deposit(depositMoney) is False:
+                            print("Transaction failed. Invalid amount!!!\n")
+                            time.sleep(2)
+                            break
+                        else:
+                            raise ValueError("Invalid Input\n")
+                    except ValueError as e:
+                        print(e)
+                        break
                 elif choice == "3":
-                    withdrawMoney = int(input("Enter the amount of moeny you wish to withdraw:\n>"))
-                    accName.withdraw(withdrawMoney)
-                    print("Transaction in process...")
-                    time.sleep(3)
-                    print("Money withdrawn successfully\n")
-                    time.sleep(2)
-                    break
+                    try:
+                        withdrawMoney = int(input("Enter the amount of moeny you wish to withdraw:\n>"))
+                        print("Transaction in process...")
+                        accName.withdraw(withdrawMoney)
+                        time.sleep(3)
+                        if accName.withdraw(withdrawMoney) is True:
+                            print("Money withdrawn successfully\n")
+                            break
+                        elif accName.withdraw(withdrawMoney) is False:
+                            print("Transaction failed. Current Balance below 5000.00 CAD!!!\n")
+                            time.sleep(2)
+                            break
+                        else:
+                            raise ValueError("Invalid Input\n")
+                    except ValueError as e:
+                        print(e)
+                        break
                 elif choice == "4":
                     print("Logging out...")
                     time.sleep(3)
