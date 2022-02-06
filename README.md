@@ -5,6 +5,7 @@ User can open two types of account:
   1. Saving Account
   2. Checquing Account
   Both the accounts have different properties. 
+  
 To log into their accounts, user must know their account number else they cannot log into it making it safe.
 User can do the following activities with their accounts:
   1.Deposti money
